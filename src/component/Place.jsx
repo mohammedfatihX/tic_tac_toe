@@ -5,7 +5,7 @@ export default function Place (props){
     let x = () => console.log(props.id)
     console.log("button place is rerendered")
  switch(props.isPlayed){
-    case "x" :
+    case "X" :
         return (
             <button className="place"  style={{backgroundColor:"#FF0000"}}>{props.place}</button>
         )

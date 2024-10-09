@@ -2,18 +2,20 @@ import React from "react"
 import Place from "./Place"
 
 export default function Board( props){
+    let nextPlayer = props.gameSetting.nextPlayer();
 
     function addMove(id){
-        console.log('id addedp ',props.gameSetting.movesO)
-        props.gameSetting.addMove(props.gameSetting.turns[props.gameSetting.turns.length-1],id)
+        //console.log('id addedp ',props.gameSetting.PlayerTurn())
+        props.gameSetting.addMove(nextPlayer,id)
     }
 
     function isplayed(id){
         return props.gameSetting.movesX.includes(id) ? "X" :props.gameSetting.movesO.includes(id) ? "O":""
     }
       console.log("board is re-rendered ",props)
-
     return (
+        <>
+        <h1>Player  {nextPlayer}</h1>
         <div className="board">
             <Place id={1} add={()=>addMove(1)} isPlayed={isplayed(1)} />
             <Place id={2} add={()=>addMove(2)} isPlayed={isplayed(2)} />
@@ -26,5 +28,6 @@ export default function Board( props){
             <Place id={9} add={()=>addMove(9)} isPlayed={isplayed(9)} />
         
         </div>
+        </>
     )
 }
